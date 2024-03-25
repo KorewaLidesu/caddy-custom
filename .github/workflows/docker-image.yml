@@ -34,4 +34,4 @@ jobs:
           push: true
           tags: |
             ${{ github.event_name == 'push' && 'korewalidesu/caddy:latest' }}
-            ${{ github.event.inputs.version != '' && format('{0}{1}{2}', 'korewalidesu/caddy:', github.event.inputs.version, '-custom')}}
+            ${{ github.event.inputs.version != '' && format('{0}{1}{2}', 'korewalidesu/caddy:', github.event.inputs.version, '-custom') || '' }}
