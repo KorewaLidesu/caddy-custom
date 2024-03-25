@@ -32,4 +32,6 @@ jobs:
           build-args: |
             "CADDY_VERSION=${{ github.event.inputs.version != '' && format('{0}{1}', github.event.inputs.version, '-') || '' }}"
           push: true
-          tags: korewalidesu/caddy:latest
+          tags: |
+            ${{ github.event_name == 'push' && 'korewalidesu/caddy:latest' }}
+            ${{ github.event.inputs.version != '' && format('{0}{1}{2}', 'korewalidesu/caddy:', github.event.inputs.version, '-custom')}}
