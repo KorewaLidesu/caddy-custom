@@ -1,10 +1,14 @@
-name: ci
+name: Build & Push Docker Image
 
 on:
   push:
     branches:
       - 'main'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Caddy specific version (default to get latest)'
+        required: true
 
 jobs:
   docker:
