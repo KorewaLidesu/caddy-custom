@@ -8,7 +8,6 @@ on:
     inputs:
       version:
         description: 'Caddy specific version (default to get latest)'
-        required: true
 
 jobs:
   docker:
