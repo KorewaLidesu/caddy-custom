@@ -26,8 +26,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           build-args: |
-            CADDY_VERSION=${{ github.event.inputs.version }}
+            CADDY_VERSION=${{ github.event.inputs.version == '' && github.event.inputs.version || 'latest' }}
           push: true
           tags: |
-            ${{ github.event_name == 'push' || github.event.inputs.version == '' && 'korewalidesu/caddy:latest' }}
+            ${{ github.event_name == 'push' || github.event.inputs.version == '' && '' || 'korewalidesu/caddy:latest' }}
             ${{ github.event.inputs.version != '' && format('{0}{1}{2}', 'korewalidesu/caddy:', github.event.inputs.version, '-custom') || '' }}
